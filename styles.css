@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+}
+
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.15;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCezbAE4ZDFFVW0SNJV8f3-05A3qZbok27X3ByE3d9fptsUIwgZ_Gf9-hrXF8OaaSlouccrUtRBDdoBSzoDrix7m3ieIa-Pzx7IQEoFreLxFMtfkApv_tCN1Jr0EvCiwIovNBiqDxvSDrZO74eCxfjVxZRi-spFRo19Z0t2VR6NvfimXCEwfG0B1zapYaI2c9DP-axPTyg4-YP9qoZk0jiHkk2KwI_YoCK5k2qhsLXRaJcLvbPLKOjtX93HM8dCfZc4NLmO3Sbv0f4);
+}
+
+.panels-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.panel-wrapper {
+    position: relative;
+    flex: 1;
+    transition: flex 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow: hidden;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.panel-wrapper:last-child {
+    border-right: none;
+}
+
+.panels-container:not(:has(.panel-trigger:checked)) .panel-wrapper:hover {
+    flex: 3;
+}
+
+.panels-container:not(:has(.panel-trigger:checked)) .panel-wrapper:not(:hover) {
+    flex: 0.8;
+}
+
+.panels-container:has(.panel-trigger:checked) .panel-wrapper {
+    flex: 0 0 60px;
+}
+
+.panels-container:has(.panel-trigger:checked) .panel-wrapper:has(.panel-trigger:checked) {
+    flex: 1 1 auto;
+}
+
+.panel-visual {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    filter: grayscale(100%) brightness(0.8) sepia(20%);
+    transition: filter 0.8s ease, transform 1s ease;
+}
+
+.panels-container:not(:has(.panel-trigger:checked)) .panel-wrapper:hover .panel-visual {
+    filter: grayscale(0%) brightness(100%) sepia(0%);
+}
+
+.panel-wrapper:has(.panel-trigger:checked) .panel-visual {
+    filter: grayscale(0%) brightness(100%) sepia(0%);
+    cursor: default;
+}
+
+.panel-wrapper:has(.panel-trigger:checked) .panel-vertical-title {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.panels-container:not(:has(.panel-trigger:checked)) .panel-wrapper:hover .panel-vertical-title {
+    opacity: 1;
+}
+
+.panels-container:not(:has(.panel-trigger:checked)) .panel-wrapper:hover .click-hint {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.panel-content-detail {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all 0.6s ease 0.2s;
+}
+
+.panel-wrapper:has(.panel-trigger:checked) .panel-content-detail {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Custom Video Styling for Experience Panel */
+.experience-video {
+    object-fit: cover;
+    background-color: transparent;
+}
+
+.panels-container:not(:has(.panel-trigger:checked)) .panel-wrapper:hover .experience-video,
+.panel-wrapper:has(.panel-trigger:checked) .experience-video {
+    object-fit: contain;
+    /* You can adjust this hex code to perfectly match the edge color of your specific video */
+    background-color: #121212;
+}
+
+.dynamic-title {
+    transition: opacity 0.3s ease;
+}
+
+.panel-trigger {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.panel-entrance-1 {
+    animation-delay: 0.1s;
+    opacity: 0;
+}
+
+.panel-entrance-2 {
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+.panel-entrance-3 {
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+.panel-entrance-4 {
+    animation-delay: 0.4s;
+    opacity: 0;
+}
+
+.panel-entrance-5 {
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+/* Custom Scrollbar Styles */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Custom Image Masking for About Me Section */
+.image-blend-mask {
+    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
+    transition: all 0.5s ease;
+}
+
+.group:hover .image-blend-mask {
+    -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+    mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+}

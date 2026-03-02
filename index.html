@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Alan Menken Digital Gallery Home</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400&amp;family=Lato:wght@300;400;700&amp;family=Great+Vibes&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#8B4513",
+                        "background-light": "#F2EFE9",
+                        "background-dark": "#1a1816",
+                        "text-light": "#2D2D2D",
+                        "text-dark": "#EAEAEA",
+                        "accent-red": "#9A3324",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Lato", "sans-serif"],
+                        script: ["Great Vibes", "cursive"],
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+                    },
+                    transitionTimingFunction: {
+                        'cinematic': 'cubic-bezier(0.25, 1, 0.5, 1)',
+                    },
+                    borderRadius: {
+                        DEFAULT: "0px",
+                    },
+                    animation: {
+                        'slide-up-fade': 'slideUpFade 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'content-fade-in': 'fadeIn 2s ease-out 1.2s forwards',
+                    },
+                    keyframes: {
+                        slideUpFade: {
+                            '0%': { transform: 'translateY(100px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                },
+            },
+        };
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body
+    class="bg-background-dark text-text-dark font-sans transition-colors duration-1000 relative overflow-hidden h-screen w-screen flex flex-col">
+    <div class="grain-overlay mix-blend-multiply dark:mix-blend-overlay"></div>
+    <nav
+        class="fixed top-0 w-full z-40 px-6 md:px-12 py-6 md:py-8 flex justify-between items-center text-text-light dark:text-text-dark animate-[fadeIn_1.5s_ease-out_forwards]">
+        <a class="group opacity-60 hover:opacity-100 transition-opacity duration-700" href="#">
+            <span class="material-symbols-outlined text-3xl md:text-4xl font-light">music_note</span>
+        </a>
+    </nav>
+    <main class="flex-grow flex flex-col justify-center items-center relative z-10 w-full h-full p-0 m-0">
+        <div class="panels-container w-full h-full group/panels" id="panels-container">
+            <!-- Panels injected dynamically by main.js -->
+        </div>
+        <div
+            class="fixed top-8 right-8 text-right z-50 pointer-events-none animate-content-fade-in opacity-0 flex flex-col items-end">
+            <h2
+                class="font-display text-3xl md:text-4xl text-white leading-none tracking-wide mb-1 opacity-90 uppercase drop-shadow-lg">
+                Alan Sanjit
+            </h2>
+            <p class="font-display text-sm md:text-base text-white/80 italic drop-shadow-md">
+                Mechatronics &amp; AI Engineering <span class="mx-1 text-xs align-middle opacity-50">|</span>
+                <span class="not-italic font-normal">Western University</span>
+            </p>
+        </div>
+    </main>
+    <footer
+        class="fixed bottom-0 w-full px-6 md:px-12 py-6 md:py-8 flex justify-between items-end z-40 pointer-events-none animate-[fadeIn_2s_ease-out_1s_forwards] opacity-0">
+    </footer>
+    <div
+        class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-auto opacity-0 hover:opacity-100 transition-opacity duration-700">
+        <button class="p-2 rounded-full border border-gray-400 text-gray-500 bg-white/10 backdrop-blur-sm"
+            onclick="document.documentElement.classList.toggle('dark')">
+            <span class="material-symbols-outlined text-sm">contrast</span>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>
