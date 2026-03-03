@@ -179,3 +179,28 @@
     -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
     mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .panels-container {
+        flex-direction: column;
+    }
+
+    .panel-wrapper {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .panel-wrapper:last-child {
+        border-bottom: none;
+    }
+
+    .panels-container:has(.panel-trigger:checked) .panel-wrapper {
+        flex: 0 0 60px;
+    }
+
+    .vertical-text {
+        writing-mode: horizontal-tb;
+        transform: rotate(0deg);
+    }
+}
